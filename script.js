@@ -20,8 +20,8 @@ function getCurrentIndex() {
   return sections.length - 1;
 }
 
-// 🖱️ Enable only on desktop (to avoid mobile errors)
-if (window.innerWidth > 1024) {
+// 🖱️ Enable scroll snapping only on desktop
+if (window.innerWidth > 1024 && main) {
   main.addEventListener("wheel", (e) => {
     if (isScrolling) return;
     if (e.deltaY > 0) scrollToSection(getCurrentIndex() + 1);
@@ -29,17 +29,27 @@ if (window.innerWidth > 1024) {
   });
 }
 
+// ===== 📱 FIX: Prevent auto-scroll on mobile =====
+window.addEventListener("load", () => {
+  if (window.innerWidth <= 1024) {
+    window.scrollTo(0, 0);
+    if (main) main.scrollTop = 0;
+  }
+});
+
 // ===== 🌗 THEME TOGGLE =====
 const modeToggle = document.getElementById("modeToggle");
 let light = false;
 
-modeToggle.addEventListener("click", () => {
-  light = !light;
-  document.body.classList.toggle("light-mode", light);
-  modeToggle.innerHTML = light
-    ? '<i class="bx bx-sun"></i>'
-    : '<i class="bx bx-moon"></i>';
-});
+if (modeToggle) {
+  modeToggle.addEventListener("click", () => {
+    light = !light;
+    document.body.classList.toggle("light-mode", light);
+    modeToggle.innerHTML = light
+      ? '<i class="bx bx-sun"></i>'
+      : '<i class="bx bx-moon"></i>';
+  });
+}
 
 // ===== 🍔 MOBILE MENU TOGGLE =====
 const menuToggle = document.getElementById("menuToggle");
@@ -49,14 +59,15 @@ if (menuToggle && navLinks) {
   menuToggle.addEventListener("click", () => {
     navLinks.classList.toggle("active");
     const icon = menuToggle.querySelector("i");
-    icon.classList.toggle("bx-x");
+    if (icon) icon.classList.toggle("bx-x");
   });
 
   // Hide menu after clicking a link
   navLinks.querySelectorAll("a").forEach((link) =>
     link.addEventListener("click", () => {
       navLinks.classList.remove("active");
-      menuToggle.querySelector("i").classList.remove("bx-x");
+      const icon = menuToggle.querySelector("i");
+      if (icon) icon.classList.remove("bx-x");
     })
   );
 }
@@ -67,20 +78,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   progressBars.forEach((bar) => {
     const percentText = bar.nextElementSibling;
-    const target = parseInt(bar.dataset.percent, 10);
+    const target = parseInt(bar.dataset.percent, 10) || 0;
     let count = 0;
 
-    // Animate bar fill and number
+    // Animate bar fill and percentage
     const fill = setInterval(() => {
       if (count >= target) clearInterval(fill);
       else {
         count++;
         bar.style.width = count + "%";
-        percentText.textContent = count + "%";
+        if (percentText) percentText.textContent = count + "%";
       }
     }, 30);
 
-    // Sparkle particles inside bar
+    // Add sparkle stars inside the bar
     createBarStars(bar);
   });
 });
