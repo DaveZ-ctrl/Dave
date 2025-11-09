@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoDevzz — Scroll Portfolio</title>
+
+    <!-- 🔗 Boxicons & CSS -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Style.css" />
+  </head>
+
+  <body>
+    <!-- 🌐 NAVBAR -->
+    <nav class="navbar">
+      <div class="navbar-left">
+        <div class="logo">
+          <span class="sumi">Eco</span><span class="verse">Devzz</span>
+        </div>
+      </div>
+
+      <div class="navbar-right">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <!-- 🌗 Theme Toggle -->
+        <button id="modeToggle" aria-label="Toggle light/dark mode">
+          <i class="bx bx-moon"></i>
+        </button>
+
+        <!-- 🍔 Mobile Menu -->
+        <button id="menuToggle" class="menu-btn" aria-label="Toggle Menu">
+          <i class="bx bx-menu"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- 🧭 MAIN CONTENT -->
+    <main id="main">
+      <!-- 🏠 HOME -->
+      <section id="home" class="section">
+        <div class="hero-card">
+          <h1 class="fade-up fade-delay-1">Hi, I'm Dave Origenes</h1>
+          <p class="fade-up fade-delay-2">
+            Welcome to my corner of the internet. This site marks the start of
+            my web development journey.
+          </p>
+          <button
+            class="hero-btn fade-up fade-delay-3"
+            onclick="document.querySelector('#projects').scrollIntoView({behavior:'smooth'})"
+          >
+            View Projects
+          </button>
+        </div>
+      </section>
+
+      <!-- 👤 ABOUT -->
+      <section id="about" class="section">
+        <div class="about-grid">
+          <img src="DAVe.jpg" alt="Profile Photo" class="profile-img" />
+          <div class="about-text">
+            <h2>About Me</h2>
+            <p>
+              Hi, I’m <b>Dave Origenes</b> — Welcome to my very first website!
+              This is where I’ll be sharing my projects, ideas, and everything
+              I’m learning along the way. Thanks for stopping by!
+            </p>
+            <div class="about-buttons">
+              <a href="#contact" class="about-btn">Get in Touch</a>
+              <a href="resume.pdf" class="about-btn" download>Download Resume</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 💡 SKILLS -->
+      <section id="skills" class="section">
+        <div class="skills-container">
+          <h2>My Skills</h2>
+
+          <div class="skills-grid">
+            <div class="skill-card">
+              <span class="skill-name">HTML</span>
+              <div class="bar">
+                <div class="progress" data-percent="10"></div>
+                <span class="percent-text">0%</span>
+              </div>
+            </div>
+
+            <div class="skill-card">
+              <span class="skill-name">CSS</span>
+              <div class="bar">
+                <div class="progress" data-percent="10"></div>
+                <span class="percent-text">0%</span>
+              </div>
+            </div>
+
+            <div class="skill-card">
+              <span class="skill-name">JavaScript</span>
+              <div class="bar">
+                <div class="progress" data-percent="10"></div>
+                <span class="percent-text">0%</span>
+              </div>
+            </div>
+
+            <div class="skill-card">
+              <span class="skill-name">Java</span>
+              <div class="bar">
+                <div class="progress" data-percent="10"></div>
+                <span class="percent-text">0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🚀 PROJECTS -->
+      <section id="projects" class="section">
+        <div class="section-wrap">
+          <h2>Featured Projects</h2>
+          <div class="projects-grid">
+            <div class="project-card">
+              <h3>Upcoming Soon</h3>
+              <p>Exciting project on the way!</p>
+            </div>
+            <div class="project-card">
+              <h3>Upcoming Soon</h3>
+              <p>Exciting project on the way!</p>
+            </div>
+            <div class="project-card">
+              <h3>Upcoming Soon</h3>
+              <p>Exciting project on the way!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 📬 CONTACT -->
+      <section id="contact" class="section contact-section">
+        <div class="contact-container">
+          <h2>Send a Message</h2>
+          <div class="contact-card">
+            <form action="https://formspree.io/f/movyanyj" method="POST">
+              <label for="name">Your Name:</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="e.g. Dave Origenes..."
+                required
+              />
+
+              <label for="email">Your Email:</label>
+              <input
+                type="email"
+                id="email"
+                name="_replyto"
+                placeholder="e.g. dave.origenes@example.com"
+                required
+              />
+
+              <label for="message">Your Message:</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="e.g. Hello, I'd like to talk about..."
+                required
+              ></textarea>
+
+              <button type="submit">
+                Send Message <i class="bx bx-send"></i>
+              </button>
+            </form>
+          </div>
+
+          <div class="social-card">
+            <h3>Connect with Me</h3>
+            <div class="social-icons">
+              <a href="https://github.com/DaveZ-ctrl" target="_blank"
+                ><i class="bx bxl-github"></i
+              ></a>
+              <a href="https://x.com/the1anjing?s=11" target="_blank"
+                ><i class="bx bxl-twitter"></i
+              ></a>
+              <a
+                href="https://www.facebook.com/dave.origenes.2024"
+                target="_blank"
+                ><i class="bx bxl-facebook"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/dave-origeness-653479398/"
+                target="_blank"
+                ><i class="bx bxl-linkedin"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ⚡ FOOTER -->
+      <footer>
+        © <span id="year"></span> EcoDevzz — All rights reserved.
+      </footer>
+    </main>
+
+    <!-- JS -->
+    <script src="script.js"></script>
+  </body>
+</html>
